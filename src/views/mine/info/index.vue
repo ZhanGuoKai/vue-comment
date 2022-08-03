@@ -3,7 +3,7 @@
     v-infinite-scroll="load"
     :infinite-scroll-disabled="loading"
     :infinite-scroll-distance="10"
-    style="max-height: 700px; overflow-y: auto;"
+    style="max-height: calc(100vh); overflow: auto;"
   >
     <el-container>
       <el-aside>

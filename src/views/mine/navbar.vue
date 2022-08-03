@@ -2,6 +2,7 @@
   <el-menu
     mode="vertical"
     :default-active="defaultSelect"
+    style="height: 100%;"
   >
     <template v-for="item in menuItems.children">
       <el-submenu v-if="item.children" :key="item.path" :index="item.path">
