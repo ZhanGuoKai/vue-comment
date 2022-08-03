@@ -4,7 +4,9 @@
       <mine-navbar default-select="info"></mine-navbar>
     </el-aside>
     <el-main class="main">
-      <router-view />
+      <transition name="el-fade-in" mode="out-in">
+        <router-view />
+      </transition>
     </el-main>
   </el-container>
 </template>
