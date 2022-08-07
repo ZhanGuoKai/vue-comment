@@ -5,21 +5,21 @@
     style="height: 100%;"
   >
     <template v-for="item in menuItems.children">
-      <el-submenu v-if="item.children" :key="item.path" :index="item.path">
-        <template slot="title">{{ item.name }}</template>
+      <el-submenu v-if="item.children" :key="item.name" :index="item.name">
+        <template slot="title">{{ item.meta.title }}</template>
         <router-link
           v-for="subItem in item.children"
           :to="`/mine/${item.path}/${subItem.path}`"
-          :key="`${item.path}/${subItem.path}`"
+          :key="subItem.name"
         >
-          <el-menu-item :index="`${item.path}/${subItem.path}`">
-            {{ subItem.name }}
+          <el-menu-item :index="subItem.name">
+            {{ subItem.meta.title }}
           </el-menu-item>
         </router-link>
       </el-submenu>
-      <router-link v-else :key="item.path" :to="`/mine/${item.path}`">
-        <el-menu-item :index="item.path">
-          {{ item.name }}
+      <router-link v-else :key="item.name" :to="`/mine/${item.path}`">
+        <el-menu-item :index="item.name">
+          {{ item.meta.title }}
         </el-menu-item>
       </router-link>
     </template>

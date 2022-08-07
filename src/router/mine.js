@@ -1,55 +1,64 @@
 export default {
   path: '/mine',
-  name: '我的',
+  name: 'mine',
   redirect: '/mine/info',
   component: () => import('@/views/mine/index'),
   children: [
     {
       path: 'info',
-      name: '个人资料',
-      component: () => import('@/views/mine/info/index.vue')
+      name: 'mine-info',
+      component: () => import('@/views/mine/info/index.vue'),
+      meta: { title: '个人资料' }
     },
     {
       path: 'order',
-      name: '我的订单',
+      name: 'mine-order',
       component: () => import('@/views/mine/order/index.vue'),
+      meta: { title: '我的订单' },
       children: [
         {
           path: 'all',
-          name: '全部订单',
-          component: () => import('@/views/mine/order/index.vue')
+          name: 'mine-order-all',
+          component: () => import('@/views/mine/order/index.vue'),
+          meta: { title: '全部订单' }
         },
         {
           path: 'unpaid',
-          name: '顶付款',
-          component: () => import('@/views/mine/order/index.vue')
+          name: 'mine-order-unpaid',
+          component: () => import('@/views/mine/order/index.vue'),
+          meta: { title: '待付款' }
         },
         {
           path: 'unused',
-          name: '待使用',
-          component: () => import('@/views/mine/order/index.vue')
+          name: 'mine-order-unused',
+          component: () => import('@/views/mine/order/index.vue'),
+          meta: { title: '待使用' }
         },
         {
           path: 'unevaluated',
-          name: '待评估',
-          component: () => import('@/views/mine/order/index.vue')
+          name: 'mine-order-unevaluated',
+          component: () => import('@/views/mine/order/index.vue'),
+          meta: { title: '待评价' }
         }
       ]
     },
     {
       path: 'coupon',
-      name: '优惠券',
-      component: () => import('@/views/mine/coupon/index.vue')
+      name: 'mine-coupon',
+      component: () => import('@/views/mine/coupon/index.vue'),
+      meta: { title: '优惠券' }
     },
     {
       path: 'collection',
-      name: '我的收藏',
-      component: () => import('@/views/mine/collection/index.vue')
+      name: 'mine-collection',
+      component: () => import('@/views/mine/collection/index.vue'),
+      meta: { title: '我的收藏' }
     },
     {
       path: 'mall',
-      name: '积分商城',
-      component: () => import('@/views/mine/mall/index.vue')
+      name: 'mine-mall',
+      component: () => import('@/views/mine/mall/index.vue'),
+      meta: { title: '积分商城' }
     }
   ]
 };

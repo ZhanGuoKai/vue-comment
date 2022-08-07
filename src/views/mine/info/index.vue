@@ -87,8 +87,8 @@ export default {
 
 <style scoped>
 #mineInfoContainer {
-  max-height: calc(100vh);
   overflow: auto;
+  max-height: calc(100vh);
 }
 .username {
   font-size: 24px;
@@ -97,14 +97,14 @@ export default {
   max-width: 300px;
 }
 .post-header {
-  font-size: 20px;
-  border: 1px solid #ebebeb;
-  border-radius: 3px;
-  background-color: white;
-  padding: 20px 10px;
-  margin: 0;
   position: sticky;
   top: 0;
+  margin: 0;
+  padding: 20px 10px;
+  background-color: white;
+  border: 1px solid #ebebeb;
+  font-size: 20px;
+  border-radius: 3px;
 }
 .loading-icon {
   margin: 20px calc(50% - 16px);
