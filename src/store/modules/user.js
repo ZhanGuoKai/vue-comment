@@ -5,6 +5,7 @@ const { login, logout } = api;
 
 const state = {
   token: getToken(),
+  phone: '',
   username: '',
   avatar: ''
 };

@@ -2,22 +2,23 @@ import axios from 'axios';
 import store from '@/store';
 
 const service = axios.create({
-  baseURL: process.env.BASE_API,
+  baseURL: '/api',
   timeout: 20000,
-  headers: { 'Content-Type': 'application/json; charset=utf-8' }
+  headers: {
+    'Content-Type': 'application/json; charset=utf-8'
+  }
 });
 
 // 请求拦截器
 service.interceptors.request.use(
   config => {
-    const token = store.state.token;
+    const token = store.state.user.token;
     if (token) {
       config.headers.name = token;
     }
     return config;
   },
   error => {
-    console.log(error);
     return Promise.reject(error);
   }
 );
@@ -34,7 +35,6 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log(error);
     return Promise.reject(error);
   }
 );
