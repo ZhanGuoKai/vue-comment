@@ -3,10 +3,7 @@ import store from '@/store';
 
 const service = axios.create({
   baseURL: '/api',
-  timeout: 20000,
-  headers: {
-    'Content-Type': 'application/json; charset=utf-8'
-  }
+  timeout: 20000
 });
 
 // 请求拦截器

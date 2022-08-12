@@ -28,6 +28,7 @@ const actions = {
       login(userInfo)
         .then(response => {
           if (response.data && response.data.token) {
+            const token = response.data.token;
             setToken(token);
             commit('SET_TOKEN', token);
             resolve();

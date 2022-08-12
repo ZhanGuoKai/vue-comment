@@ -1,4 +1,5 @@
 import request from '@/utils/request';
+import qs from 'querystring';
 
 /**
  * @typedef Info 用户登录信息
@@ -23,7 +24,7 @@ export default {
    * @returns {Promise<Response<{token:string}>>}
    */
   login(userInfo) {
-    return request.post('/uua/login', userInfo);
+    return request.post('/uaa/login', userInfo);
   },
 
   /**
@@ -33,7 +34,7 @@ export default {
    * @returns {Promise<Response<{}>>}
    */
   getVerificationCode(phone) {
-    return request.post('/uaa/auth/send/code', { phone });
+    return request.post('/uaa/auth/send/code', qs.stringify({ phone }));
   },
 
   /**
