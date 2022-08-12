@@ -1,9 +1,9 @@
 <template>
   <div
+    id="mineInfoContainer"
     v-infinite-scroll="load"
-    :infinite-scroll-disabled="loading"
+    :infinite-scroll-disabled="disabled"
     :infinite-scroll-distance="10"
-    style="max-height: 700px; overflow-y: auto;"
   >
     <el-container>
       <el-aside>
@@ -15,7 +15,8 @@
           direction="vertical"
           :column="3"
           :colon="false"
-          :labelStyle="{ 'padding-top': '40px' }"
+          :labelStyle="{ 'padding-top': '40px', 'text-align': 'center' }"
+          :contentStyle="{ 'text-align': 'center' }"
         >
           <span class="username" slot="title">{{ username }}</span>
           <el-descriptions-item label="关注数">
@@ -30,15 +31,13 @@
         </el-descriptions>
       </el-main>
     </el-container>
-    <!-- <p class="post-header">123</p>
-    <el-card>
-      <p class="post-header" slot="header">我的贴子</p>
-      <div>
-        <p v-for="i in n" :key="i" style="height: 50px">{{ i }}</p>
-      </div>
-    </el-card> -->
     <p class="post-header"><strong>我的贴子</strong></p>
     <p v-for="i in n" :key="i" style="height: 50px">{{ i }}</p>
+    <i v-if="loading" class="loading-icon el-icon-loading" />
+    <p v-if="noMore"><center>没有更多了</center></p>
+    <el-backtop target="#mineInfoContainer" :right="100" :bottom="100">
+      <i class="el-icon-top back-top" />
+    </el-backtop>
   </div>
 </template>
 
@@ -60,6 +59,7 @@ export default {
       /** @type {number} 积分 */
       points: 454,
       loading: false,
+      noMore: false,
       n: 0
     };
   },
@@ -72,13 +72,24 @@ export default {
       setTimeout(() => {
         this.n += 10;
         this.loading = false;
+        if (this.n >= 50) this.noMore = true;
       }, 1000);
+    }
+  },
+
+  computed: {
+    disabled() {
+      return this.loading || this.noMore;
     }
   }
 };
 </script>
 
 <style scoped>
+#mineInfoContainer {
+  overflow: auto;
+  max-height: calc(100vh);
+}
 .username {
   font-size: 24px;
 }
@@ -86,13 +97,21 @@ export default {
   max-width: 300px;
 }
 .post-header {
-  font-size: 20px;
-  border: 1px solid #ebebeb;
-  border-radius: 3px;
-  background-color: white;
-  padding: 20px 10px;
-  margin: 0;
   position: sticky;
   top: 0;
+  margin: 0;
+  padding: 20px 10px;
+  background-color: white;
+  border: 1px solid #ebebeb;
+  font-size: 20px;
+  border-radius: 3px;
+}
+.loading-icon {
+  margin: 20px calc(50% - 16px);
+  font-size: 32px;
+  color: #409eff;
+}
+.back-top {
+  font-size: 40px;
 }
 </style>
